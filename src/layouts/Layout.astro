@@ -2,9 +2,10 @@
 ---
 interface Props {
   title: string;
+  appMode?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, appMode = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -26,7 +27,8 @@ const { title } = Astro.props;
       content="Run your own cosy café with friends in Co-Op Café."
     />
   </head>
-  <body>
+  <body class={appMode ? "app-mode" : ""}>
+  {!appMode && (
     <header>
       <a class="logo" href="/">Co-Op Café</a>
       <nav>
@@ -36,13 +38,16 @@ const { title } = Astro.props;
         <a class="play-button" href="/play">Play Demo</a>
       </nav>
     </header>
+  )}
 
-    <slot />
+  <slot />
 
+  {!appMode && (
     <footer>
       <p>© 2026 Co-Op Café · Made by JoeDev36.</p>
     </footer>
-  </body>
+  )}
+</body>
 </html>
 
 <style is:global>
@@ -111,4 +116,11 @@ const { title } = Astro.props;
     color: #c5ad98;
     border-top: 1px solid #49352b;
   }
+
+  body.app-mode {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
 </style>

@@ -1,39 +1,31 @@
 
+
 ---
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Play Co-Op Café">
+<Layout title="Co-Op Café" appMode={true}>
   <main class="play-page">
-    <h1>Play Co-Op Café</h1>
-    <p>Step inside and start running your café.</p>
-
-    <div class="game-container">
-      <iframe
-        src="https://joemolloy36.github.io/Co-OpCafeDemo"
-        title="Co-Op Café WebGL Game"
-        allow="fullscreen"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <iframe
+      src="https://joemolloy36.github.io/Co-OpCafeDemo"
+      title="Co-Op Café"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
   </main>
 
   <style>
     .play-page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-
-    .game-container {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #682b0c;
-      border-radius: 12px;
+      height: 100vh;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
     }
 
     iframe {
+      display: block;
       width: 100%;
       height: 100%;
       border: 0;
