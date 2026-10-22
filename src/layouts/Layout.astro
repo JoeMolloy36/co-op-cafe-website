@@ -1,0 +1,93 @@
+
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#682b0c" />
+    <title>{title} | Co-Op Café</title>
+    <meta
+      name="description"
+      content="Run your own cosy café with friends in Co-Op Café."
+    />
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="/">☕ Co-Op Café</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/how-to-play">How to Play</a>
+        <a class="play-button" href="/play">Play Demo</a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer>
+      <p>© 2026 Co-Op Café · Made with care.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    font-family: system-ui, m5x7;
+    color: #f6e9d6;
+    background: #682b0c;
+    font-synthesis: none;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.25rem 5%;
+    border-bottom: 1px solid #a36104;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .logo { font-size: 1.25rem; font-weight: 800; }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  nav a:hover { color: #f2b36f; }
+
+  .play-button {
+    background: #d98b48;
+    color: #251a16;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #c5ad98;
+    border-top: 1px solid #49352b;
+  }
+</style>
