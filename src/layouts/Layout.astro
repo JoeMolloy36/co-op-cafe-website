@@ -66,17 +66,17 @@ const { title, appMode = false } = Astro.props;
     --footer-bg: #e69927;
 
     --text-color: #f6e9d6;
-    --muted-color: #c5ad98;
+    --muted-color: #f6e9d6;
 
-    --accent-color: #d98b48;
+    --accent-color: #a37f6f;
     --accent-hover: #f2b36f;
-    --border-color: #633a00;
+    --border-color: #a37f6f;
 
     /* Typography */
     --logo-size: 1.8rem;
     --nav-size: 1.3rem;
     --button-size: 1.4rem;
-    --footer-size: 0.95rem;
+    --footer-size: 1.1rem;
 
     /* Spacing */
     --header-padding: 1.25rem 5%;
@@ -184,6 +184,11 @@ const { title, appMode = false } = Astro.props;
     color: var(--accent-hover);
   }
 
+.text-outline {
+  -webkit-text-stroke: 1px #251a16;
+  paint-order: stroke fill;
+}
+
   /* ========================================
      PLAY DEMO BUTTON
      ======================================== */
@@ -243,6 +248,8 @@ const { title, appMode = false } = Astro.props;
   footer p {
     margin: 0;
   }
+
+
 
   /* ========================================
      APP MODE
