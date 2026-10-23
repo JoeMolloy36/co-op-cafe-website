@@ -29,10 +29,11 @@ const { title, appMode = false } = Astro.props;
     />
   </head>
 
-  <body class={appMode ? "app-mode" : ""}>
-    {!appMode && (
-      <header>
-        <a class="logo" href="/">Co-Op Café</a>
+  
+
+  <body>
+  <header>
+    <a class="logo" href="/">Co-Op Café</a>
 
         <nav>
           <a href="/">Home</a>
@@ -40,17 +41,16 @@ const { title, appMode = false } = Astro.props;
           <a href="/how-to-play">How to Play</a>
           <a class="play-button" href="/play">Play Demo</a>
         </nav>
-      </header>
-    )}
+  </header>
 
-    <slot />
+  <slot />
 
-    {!appMode && (
-      <footer>
-        <p>© 2026 Co-Op Café · Made by JoeDev36.</p>
-      </footer>
-    )}
-  </body>
+  <footer>
+    <p>© 2026 Co-Op Café · Made by JoeDev36.</p>
+  </footer>
+</body>
+
+
 </html>
 
 <style is:global>
