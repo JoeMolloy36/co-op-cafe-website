@@ -33,7 +33,10 @@ const { title, appMode = false } = Astro.props;
 
   <body>
   <header>
-    <a class="logo" href="/">Co-Op Café</a>
+    <a class="logo" href="/">
+  <img src="/icons/icon.png" alt="" class="logo-image" />
+  <span>Co-Op Café</span>
+</a>
 
         <nav>
           <a href="/">Home</a>
@@ -160,11 +163,23 @@ const { title, appMode = false } = Astro.props;
 
   /* Website logo / title */
 
+
+
   .logo {
-    font-size: var(--logo-size);
-    font-weight: 800;
-    white-space: nowrap;
-  }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--logo-size);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.logo-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
 
   /* Navigation links */
 
@@ -281,9 +296,15 @@ const { title, appMode = false } = Astro.props;
       padding: 1rem;
     }
 
-    .logo {
-      font-size: 1.6rem;
-    }
+  .logo {
+  font-size: 1.6rem;
+  gap: 8px;
+}
+
+.logo-image {
+  width: 38px;
+  height: 38px;
+}
 
     nav {
       justify-content: center;
