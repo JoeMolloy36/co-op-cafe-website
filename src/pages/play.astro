@@ -1,11 +1,15 @@
 
-
 ---
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Co-Op Café" appMode={true}>
+<Layout title="Co-Op Café">
   <main class="play-page">
+    <div class="browser-content">
+      <h1>Play Co-Op Café</h1>
+      <p>Step inside and start running your café.</p>
+    </div>
+
     <iframe
       src="https://joemolloy36.github.io/Co-OpCafeDemo"
       title="Co-Op Café"
@@ -14,9 +18,54 @@ import Layout from "../layouts/Layout.astro";
     ></iframe>
   </main>
 
+  <script>
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      ("standalone" in navigator &&
+        (navigator as Navigator & { standalone?: boolean }).standalone === true);
+
+    if (isStandalone) {
+      document.body.classList.add("app-mode");
+    }
+  </script>
+
   <style>
     .play-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .browser-content {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .play-page iframe {
+      display: block;
       width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      background: #251a16;
+    }
+
+    /* Only used when opened as a Home Screen web app */
+    :global(body.app-mode) {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    :global(body.app-mode header),
+    :global(body.app-mode footer),
+    :global(body.app-mode .browser-content) {
+      display: none;
+    }
+
+    :global(body.app-mode .play-page) {
+      width: 100%;
+      max-width: none;
       height: 100vh;
       height: 100dvh;
       margin: 0;
@@ -24,11 +73,10 @@ import Layout from "../layouts/Layout.astro";
       overflow: hidden;
     }
 
-    iframe {
-      display: block;
+    :global(body.app-mode .play-page iframe) {
       width: 100%;
       height: 100%;
-      border: 0;
+      aspect-ratio: auto;
     }
   </style>
 </Layout>
