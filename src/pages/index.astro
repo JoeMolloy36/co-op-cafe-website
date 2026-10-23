@@ -13,6 +13,9 @@ import Layout from "../layouts/Layout.astro";
 
     <h1>Co-Op Café</h1>
     <p>A Cozy Café Simulator.</p>
+
+    <a href="/play" class="hero-play-button">Play Demo</a>
+
   </main>
 
   <style>
@@ -44,6 +47,24 @@ import Layout from "../layouts/Layout.astro";
       margin: 0;
     }
 
+    
+.hero-play-button {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 14px 36px;
+  background: #b87545;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.hero-play-button:hover {
+  background: #965a32;
+}
+
+
     @media (max-width: 600px) {
       .center-logo {
         width: 180px;
@@ -58,5 +79,8 @@ import Layout from "../layouts/Layout.astro";
         font-size: clamp(1.5rem, 5vw, 2.5rem);
       }
     }
+
+    
+
   </style>
 </Layout>
