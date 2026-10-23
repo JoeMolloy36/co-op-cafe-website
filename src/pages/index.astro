@@ -5,11 +5,35 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Co-Op Café">
   <main>
+    <img
+      class="center-logo"
+      src="/icons/icon.png"
+      alt="Co-Op Café logo"
+    />
+
     <h1>Co-Op Café</h1>
     <p>A Cozy Café Simulator.</p>
   </main>
 
   <style>
+    main {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      padding: 1rem;
+    }
+
+    .center-logo {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
     h1 {
       font-size: 80px;
       margin: 0;
@@ -20,15 +44,19 @@ import Layout from "../layouts/Layout.astro";
       margin: 0;
     }
 
-    main {
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
+    @media (max-width: 600px) {
+      .center-logo {
+        width: 120px;
+        height: 120px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 10vw, 5rem);
+      }
+
+      p {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+      }
     }
   </style>
 </Layout>
-
