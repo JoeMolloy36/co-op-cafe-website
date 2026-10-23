@@ -11,73 +11,139 @@ const { title, appMode = false } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#251a16" />
-
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta name="theme-color" content="#251a16" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Co-Op Café" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="theme-color" content="#682b0c" />
+
     <title>{title} | Co-Op Café</title>
     <meta
       name="description"
       content="Run your own cosy café with friends in Co-Op Café."
     />
   </head>
+
   <body class={appMode ? "app-mode" : ""}>
-  {!appMode && (
-    <header>
-      <a class="logo" href="/">Co-Op Café</a>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/how-to-play">How to Play</a>
-        <a class="play-button" href="/play">Play Demo</a>
-      </nav>
-    </header>
-  )}
+    {!appMode && (
+      <header>
+        <a class="logo" href="/">Co-Op Café</a>
 
-  <slot />
+        <nav>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/how-to-play">How to Play</a>
+          <a class="play-button" href="/play">Play Demo</a>
+        </nav>
+      </header>
+    )}
 
-  {!appMode && (
-    <footer>
-      <p>© 2026 Co-Op Café · Made by JoeDev36.</p>
-    </footer>
-  )}
-</body>
+    <slot />
+
+    {!appMode && (
+      <footer>
+        <p>© 2026 Co-Op Café · Made by JoeDev36.</p>
+      </footer>
+    )}
+  </body>
 </html>
 
 <style is:global>
+  /* ========================================
+     DESIGN SETTINGS
+     Change these values to customise the site
+     ======================================== */
+
   :root {
-  font-family: "m5x7", sans-serif;
-   font-weight: bold;
-  -webkit-text-stroke: 0.5px;
-  color: #f6e9d6;
-  background: #251a16;
-  font-synthesis: none;
-}
+    /* Colours */
+    --page-bg: #251a16;
+    --header-bg: #352219;
+    --footer-bg: #1c120f;
 
-  
+    --text-color: #f6e9d6;
+    --muted-color: #c5ad98;
 
+    --accent-color: #d98b48;
+    --accent-hover: #f2b36f;
+    --border-color: #a36104;
+
+    /* Typography */
+    --logo-size: 1.8rem;
+    --nav-size: 1.2rem;
+    --button-size: 1.1rem;
+    --footer-size: 0.95rem;
+
+    /* Spacing */
+    --header-padding: 1.25rem 5%;
+    --nav-gap: 1.25rem;
+    --button-padding: 0.7rem 1.1rem;
+
+    /* General */
+    --content-width: 1200px;
+    --border-radius: 8px;
+
+    font-family: "m5x7", sans-serif;
+    font-weight: bold;
+    color: var(--text-color);
+    background: var(--page-bg);
+    font-synthesis: none;
+  }
+
+  /* ========================================
+     CUSTOM FONT
+     ======================================== */
 
   @font-face {
-  font-family: "m5x7";
-  src: url("/fonts/m5x7.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+    font-family: "m5x7";
+    src: url("/fonts/m5x7.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
+  /* ========================================
+     GLOBAL STYLES
+     ======================================== */
 
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+    background: var(--page-bg);
+  }
 
   body {
     margin: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--page-bg);
+    color: var(--text-color);
+    font-family: "m5x7", sans-serif;
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px;
   }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Keep the main page content between header and footer */
+  body > main {
+    flex: 1;
+  }
+
+  /* ========================================
+     HEADER
+     ======================================== */
 
   header {
     display: flex;
@@ -85,42 +151,165 @@ const { title, appMode = false } = Astro.props;
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    padding: 1.25rem 5%;
-    border-bottom: 2px solid #a36104;
+
+    padding: var(--header-padding);
+
+    background: var(--header-bg);
+    border-bottom: 2px solid var(--border-color);
   }
 
-  a { color: inherit; text-decoration: none; }
+  /* Website logo / title */
 
-  .logo { font-size: 1.25rem; font-weight: 800; }
+  .logo {
+    font-size: var(--logo-size);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  /* Navigation links */
 
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem;
+    gap: var(--nav-gap);
     align-items: center;
   }
 
-  nav a:hover { color: #f2b36f; }
+  nav a {
+    font-size: var(--nav-size);
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: var(--accent-hover);
+  }
+
+  /* ========================================
+     PLAY DEMO BUTTON
+     ======================================== */
 
   .play-button {
-    background: #d98b48;
-    color: #251a16;
-    padding: 0.65rem 1rem;
-    border-radius: 8px;
+    display: inline-block;
+
+    background: var(--accent-color);
+    color: var(--page-bg);
+
+    padding: var(--button-padding);
+    border-radius: var(--border-radius);
+
+    font-size: var(--button-size);
     font-weight: 700;
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
   }
+
+  .play-button:hover {
+    background: var(--accent-hover);
+    color: var(--page-bg);
+    transform: translateY(-2px);
+  }
+
+  .play-button:active {
+    transform: translateY(0);
+  }
+
+  /* Keyboard accessibility */
+
+  a:focus-visible {
+    outline: 2px solid var(--accent-hover);
+    outline-offset: 4px;
+  }
+
+  /* ========================================
+     FOOTER
+     ======================================== */
 
   footer {
+    margin-top: auto;
+    width: 100%;
+
     text-align: center;
-    padding: 2rem 1rem;
-    color: #c5ad98;
+    padding: 1.5rem 1rem;
+
+    background: var(--footer-bg);
+    color: var(--muted-color);
+
     border-top: 1px solid #49352b;
+    font-size: var(--footer-size);
   }
 
-  body.app-mode {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
+  footer p {
+    margin: 0;
+  }
 
+  /* ========================================
+     APP MODE
+     Used when appMode=true
+     Hides the website header and footer
+     ======================================== */
+
+  body.app-mode {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--page-bg);
+  }
+
+  body.app-mode header,
+  body.app-mode footer {
+    display: none;
+  }
+
+  /* ========================================
+     MOBILE RESPONSIVENESS
+     ======================================== */
+
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+    }
+
+    nav {
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    nav a {
+      font-size: 1rem;
+    }
+
+    .play-button {
+      padding: 0.6rem 0.9rem;
+      font-size: 1rem;
+    }
+
+    footer {
+      padding: 1.2rem 0.75rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  /* ========================================
+     REDUCED MOTION ACCESSIBILITY
+     ======================================== */
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
 </style>
