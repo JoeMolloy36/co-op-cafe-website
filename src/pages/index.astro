@@ -3,136 +3,90 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Home">
+<Layout title="">
   <main>
-    <!-- Hero section -->
-    <section class="hero">
-      <div class="hero-content">
-        <img
-          class="center-logo"
-          src="/logocircle.png"
-          alt="ZAGAMUN logo"
-        />
+    <img
+      class="center-logo"
+      src="/icons/icon.png"
+      alt="Co-Op Café logo"
+    />
 
-        <h1>ZAGAMUN 2026</h1>
+    <h1>Co-Op Café</h1>
+    <p>A Cozy Café Simulator.</p>
 
-        <p class="intro">
-          The Gonzaga College Model United Nations conference
-          bringing together delegates across Ireland
-        </p>
-      </div>
-    </section>
+    <a href="/play" class="hero-play-button">Play Demo</a>
 
-    <!-- Description section -->
-    <section class="description">
-      <h2>Welcome to ZAGAMUN 2026</h2>
-
-      <p>
-        <!-- Add your conference description here -->
-        ZAGAMUN brings together delegates from across Ireland
-        to debate, negotiate and collaborate on international issues.
-      </p>
-    </section>
   </main>
 
   <style>
     main {
-      padding: 0;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      min-height: 90vh;
+      min-height: 70vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 3rem 1.5rem;
-
-      background-image:
-        linear-gradient(
-          rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0.55)
-        ),
-        url("/background.jpg");
-
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      max-width: 900px;
+      gap: 10px;
+      padding: 1rem;
     }
 
     .center-logo {
-      width: 340px;
-      height: 340px;
+      width: 350px;
+      height: 350px;
       object-fit: contain;
-      margin-bottom: 5px;
+      margin-bottom: -28px;
+      transform: translateX(5px);
     }
 
     h1 {
-      font-size: clamp(2rem, 8vw, 4rem);
+      font-size: 80px;
       margin: 0;
-      color: #ffffff;
-      letter-spacing: 2px;
+      margin-top: 0;
     }
 
-    .intro {
-      max-width: 750px;
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      line-height: 1.4;
-      margin: 10px 0 0;
-      color: #ffffff;
+    p {
+      font-size: 40px;
+      margin: 0;
     }
 
-    /* DESCRIPTION SECTION */
-    .description {
-      min-height: 60vh;
-      padding: 5rem 2rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-      color: #ffffff;
-    }
+    
+.hero-play-button {
+  display: inline-block;
+  margin-top: 75px;
+  margin-bottom: 50px;
+  padding: 16px 55px;
+  font-size: 35px;
+  background: #c77700;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
 
-    .description h2 {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-    }
+.hero-play-button:hover {
+  background: #965a32;
+}
 
-    .description p {
-      font-size: 1.2rem;
-      line-height: 1.7;
-    }
 
-    /* MOBILE */
+
+
     @media (max-width: 600px) {
-      .hero {
-        min-height: 85vh;
-        padding: 2rem 1.25rem;
-      }
-
       .center-logo {
-        width: 220px;
-        height: 220px;
+        width: 180px;
+        height: 180px;
       }
 
       h1 {
-        font-size: clamp(2.5rem, 11vw, 4rem);
+        font-size: clamp(2.5rem, 10vw, 5rem);
       }
 
-      .intro {
-        font-size: 1rem;
-      }
-
-      .description {
-        padding: 3rem 1.5rem;
+      p {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
       }
     }
+
+    
+
   </style>
 </Layout>
